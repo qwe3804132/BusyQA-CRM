@@ -32,8 +32,10 @@ crmbackend.app.jwtExpirationMs= 86400000
 debug=false
 
 <<<<<<< HEAD
-trace=false  ```
-=======
+trace=false  
+
+```
+
 
 <br />
 **4. Create database by running the code below**<br />
