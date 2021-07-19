@@ -9,7 +9,7 @@ please make sure that your **Port-4200** not occupied by other program.
 <br /><br /><br />
 For **Back-End** configuration please <br />
 **1. Firstly configure your DB schema by importing the script file in the root folder of repo.**<br />
-**2. Make sure there are no program running on port - 8080**
+**2. Make sure there are no program running on port - 8080**<br />
 **3. Application.properties - Make sure you have meet all requirement and with correct DB username and password and port number**
 
 ```server.port=8080
