@@ -34,10 +34,8 @@ debug=false
 <<<<<<< HEAD
 trace=false  ```
 =======
-trace=false  
-```
->>>>>>> 9bf9984e965e69d2aad697f5a62d8b29252c2355
 
+<br />
 **4. Create database by running the code below**<br />
-```CREATE DATABASE `busyqacrmbackenddb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;```
+```CREATE DATABASE `busyqacrmbackenddb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;```<br />
 **5. You can run the Junit-test if table not shows in when the first time server start**
