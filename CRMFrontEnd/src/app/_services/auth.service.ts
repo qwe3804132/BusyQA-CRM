@@ -39,4 +39,8 @@ export class AuthService {
       httpOptions
     );
   }
+
+  isLogged() {
+    return !!localStorage.getItem('auth-user');
+  }
 }

@@ -8,24 +8,24 @@ export class TokenStorageService {
   constructor() {}
 
   signOut(): void {
-    window.sessionStorage.clear();
+    window.localStorage.clear();
   }
 
   saveToken(token: string): void {
-    window.sessionStorage.removeItem(KEYTOKEN);
-    window.sessionStorage.setItem(KEYTOKEN, token);
+    window.localStorage.removeItem(KEYTOKEN);
+    window.localStorage.setItem(KEYTOKEN, token);
   }
 
   getToken(): string {
-    return sessionStorage.getItem(KEYTOKEN); //non-null assertion operator
+    return localStorage.getItem(KEYTOKEN); //non-null assertion operator
   }
 
   saveUser(user: any): void {
-    window.sessionStorage.removeItem(KEYUSER);
-    window.sessionStorage.setItem(KEYUSER, JSON.stringify(user));
+    window.localStorage.removeItem(KEYUSER);
+    window.localStorage.setItem(KEYUSER, JSON.stringify(user));
   }
 
   getUser(): any {
-    return JSON.parse(sessionStorage.getItem(KEYUSER));
+    return JSON.parse(localStorage.getItem(KEYUSER));
   }
 }

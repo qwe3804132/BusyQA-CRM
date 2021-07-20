@@ -1,3 +1,4 @@
+import { AuthGuard } from './_services/auth.guard';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,7 +30,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
