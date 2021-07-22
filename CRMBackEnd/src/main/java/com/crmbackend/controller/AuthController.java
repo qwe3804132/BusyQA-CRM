@@ -28,8 +28,8 @@ import com.crmbackend.payLoad.response.JwtResponse;
 import com.crmbackend.payLoad.response.ReturnMessageResponse;
 import com.crmbackend.security.jwt.JwtUtils;
 import com.crmbackend.security.securityServices.UserDetailsImpl;
-import com.crmbackend.userService.RoleRepository;
-import com.crmbackend.userService.UserRepository;
+import com.crmbackend.userService.repo.RoleRepository;
+import com.crmbackend.userService.repo.UserRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

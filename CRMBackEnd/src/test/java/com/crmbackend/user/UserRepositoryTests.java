@@ -12,7 +12,7 @@ import org.springframework.test.annotation.Rollback;
 
 import com.crmbackend.entity.Role;
 import com.crmbackend.entity.User;
-import com.crmbackend.userService.UserRepository;
+import com.crmbackend.userService.repo.UserRepository;
 
 @DataJpaTest(showSql = true)
 @AutoConfigureTestDatabase(replace = Replace.NONE)

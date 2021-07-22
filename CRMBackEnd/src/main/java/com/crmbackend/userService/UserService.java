@@ -7,6 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.crmbackend.entity.User;
+import com.crmbackend.userService.repo.RoleRepository;
+import com.crmbackend.userService.repo.UserRepository;
 
 @Service
 @Transactional

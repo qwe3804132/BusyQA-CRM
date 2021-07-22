@@ -1,4 +1,4 @@
-package com.crmbackend.userService;
+package com.crmbackend.userService.repo;
 
 import java.util.Optional;
 

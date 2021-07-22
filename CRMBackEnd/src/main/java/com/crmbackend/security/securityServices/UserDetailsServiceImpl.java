@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.crmbackend.entity.User;
-import com.crmbackend.userService.UserRepository;
+import com.crmbackend.userService.repo.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
