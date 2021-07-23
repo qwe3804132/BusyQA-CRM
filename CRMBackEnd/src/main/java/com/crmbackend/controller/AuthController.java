@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.crmbackend.allService.userService.repo.RoleRepository;
+import com.crmbackend.allService.userService.repo.UserRepository;
 import com.crmbackend.entity.Role;
 import com.crmbackend.entity.User;
 import com.crmbackend.payLoad.request.LoginRequest;
@@ -28,8 +30,6 @@ import com.crmbackend.payLoad.response.JwtResponse;
 import com.crmbackend.payLoad.response.ReturnMessageResponse;
 import com.crmbackend.security.jwt.JwtUtils;
 import com.crmbackend.security.securityServices.UserDetailsImpl;
-import com.crmbackend.userService.repo.RoleRepository;
-import com.crmbackend.userService.repo.UserRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

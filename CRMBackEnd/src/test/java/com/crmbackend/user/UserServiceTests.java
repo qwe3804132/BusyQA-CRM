@@ -10,9 +10,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
+import com.crmbackend.allService.userService.uService.UserService;
 import com.crmbackend.entity.Role;
 import com.crmbackend.entity.User;
-import com.crmbackend.userService.UserService;
 
 @DataJpaTest(showSql = true)
 @AutoConfigureTestDatabase(replace = Replace.NONE)
