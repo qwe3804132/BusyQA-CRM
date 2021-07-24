@@ -1,6 +1,14 @@
-<div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">BusyQA-CRM</a>
+<nav class="navbar navbar-expand-sm navbar-dark bg-success mb-3">
+  <a href="/home" class="navbar-brand">BusyQA-CRM</a>
+
+  <button
+    class="navbar-toggler"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
         <a href="/home" class="nav-link" routerLink="home">Home </a>
@@ -50,11 +58,11 @@
         <a href class="nav-link" (click)="logout()">LogOut</a>
       </li>
     </ul>
-  </nav>
-
-  <div class="container">
-    <router-outlet></router-outlet>
   </div>
+</nav>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
 </div>
 
 <footer id="main-footer" class="bg-light">
@@ -70,7 +78,6 @@
 
 <script>
   // Get the current year for the copyright
-  $("#year").text(new Date().getFullYear());
 
   //init scrollspy
 </script>

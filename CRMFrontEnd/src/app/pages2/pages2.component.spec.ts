@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavAdminComponent } from './nav-admin.component';
+import { Pages2Component } from './pages2.component';
 
-describe('NavAdminComponent', () => {
-  let component: NavAdminComponent;
-  let fixture: ComponentFixture<NavAdminComponent>;
+describe('Pages2Component', () => {
+  let component: Pages2Component;
+  let fixture: ComponentFixture<Pages2Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavAdminComponent ]
+      declarations: [ Pages2Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavAdminComponent);
+    fixture = TestBed.createComponent(Pages2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
