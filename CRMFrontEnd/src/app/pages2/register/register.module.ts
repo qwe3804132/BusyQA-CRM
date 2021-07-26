@@ -1,3 +1,4 @@
+import { ConfirmEqualValidatorDirective } from './../shared/confirm-equal-validator.directive';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, ConfirmEqualValidatorDirective],
   imports: [
     CommonModule,
     RegisterRoutingModule,

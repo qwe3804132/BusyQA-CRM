@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmEqualValidatorDirective } from './pages2/shared/confirm-equal-validator.directive';
 //import { AdminRoutingModule } from './pages/admin/routing-admin.module';
 
 @NgModule({
