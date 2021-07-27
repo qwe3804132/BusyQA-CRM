@@ -20,4 +20,6 @@ export class TeamComponent implements OnInit {
       }
     );
   }
+
+  removeUserFromTeam(userId, teamId) {}
 }

@@ -1,0 +1,41 @@
+.jumbotron {
+  background: url("http://placekitten.com/800/500") no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  padding: 5em inherit;
+}
+
+.card {
+  width: 18rem;
+  height: 600px;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+#deleteButton {
+  position: absolute;
+
+  bottom: 0;
+}

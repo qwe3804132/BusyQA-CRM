@@ -31,5 +31,10 @@ public class TeamController {
 		return teamService.listAll();
 
 	}
+	
+	  
+	
+	
+	
 
 }

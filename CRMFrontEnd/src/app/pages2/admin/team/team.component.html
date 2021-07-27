@@ -1,1 +1,45 @@
-<p>team works!</p>
+<header>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Team Management</h1>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="card-columns">
+    <div class="card" *ngFor="let item of teamData">
+      <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/301x200" alt="">
+      <div class="card-body">
+        <h4 class="card-title">Team: {{item.teamname}}</h4>
+        <p class="card-text">{{item.description}}</p>
+        <p class="card-text">Number of Users: {{item.users.length}}</p>
+        <div class="alert alert-success" *ngIf="item.active==1">
+          <strong>This Team is active</strong>
+        </div>
+        <div class="alert alert-danger" *ngIf="item.active==0">
+          <strong>This Team is disabled</strong>
+        </div>
+        <table class="table table-sm table-hover table-striped">
+          <thead>
+            <tr>
+              <th>UID</th>
+              <th>Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let subItem of item.users">
+              <td>{{subItem.id}}</td>
+              <td>{{subItem.firstName}} {{subItem.lastName}}</td>
+              <td> <button class="btn-sm btn-danger" type="button">remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button *ngIf="item.users.length>=2 == false" class="btn-sm btn-success" type="button">add member</button>
+      </div>
+      <button type="button" id="deleteButton" class="btn btn-danger btn-lg btn-block">de-active team </button>
+    </div>
+  </div>
+</div>
