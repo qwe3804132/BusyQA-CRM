@@ -1,9 +1,13 @@
 package com.crmbackend.entity;
 
 import java.util.Date;
+
+
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +17,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import javax.persistence.*;  
+import java.util.Set;  
+import java.util.stream.Collectors;  
+import java.util.stream.Stream;
 
 @Entity
 @Table(name = "tblTeams")
@@ -34,9 +44,8 @@ public class Team {
 	@Column(name = "active", length = 64, nullable = false)
 	private int active;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "teams_users", joinColumns = @JoinColumn(name = "team_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-	private Set<User> users = new HashSet<>();
+	@OneToMany(mappedBy = "tblteams", cascade = CascadeType.ALL)
+	private Set<TeamUsers> team_users = new HashSet<>();
 
 	public Integer getId() {
 		return id;
@@ -78,38 +87,36 @@ public class Team {
 		this.active = active;
 	}
 
-	public Set<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
+	
 
 	public Team() {
 
 	};
 
-	public Team(Integer id, String teamname, Date delete_date, String description, int active) {
+	public Team(Integer id, String teamname, Date delete_date, String description, int active,TeamUsers...teamusers) {
 		super();
 		this.id = id;
 		this.teamname = teamname;
 		this.delete_date = delete_date;
 		this.description = description;
 		this.active = active;
+		
+		 for(TeamUsers teamandusers : teamusers) 
+			teamandusers.setTeam(this);
+	     this.team_users = Stream.of(teamusers).collect(Collectors.toSet());
+	}
+
+	public Set<TeamUsers> getTeam_users() {
+		return team_users;
+	}
+
+	public void setTeam_users(Set<TeamUsers> team_users) {
+		this.team_users = team_users;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + active;
-		result = prime * result + ((delete_date == null) ? 0 : delete_date.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((teamname == null) ? 0 : teamname.hashCode());
-		result = prime * result + ((users == null) ? 0 : users.hashCode());
-		return result;
+		return Objects.hash(active, delete_date, description, id, team_users, teamname);
 	}
 
 	@Override
@@ -121,44 +128,18 @@ public class Team {
 		if (getClass() != obj.getClass())
 			return false;
 		Team other = (Team) obj;
-		if (active != other.active)
-			return false;
-		if (delete_date == null) {
-			if (other.delete_date != null)
-				return false;
-		} else if (!delete_date.equals(other.delete_date))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (teamname == null) {
-			if (other.teamname != null)
-				return false;
-		} else if (!teamname.equals(other.teamname))
-			return false;
-		if (users == null) {
-			if (other.users != null)
-				return false;
-		} else if (!users.equals(other.users))
-			return false;
-		return true;
+		return active == other.active && Objects.equals(delete_date, other.delete_date)
+				&& Objects.equals(description, other.description) && Objects.equals(id, other.id)
+				&& Objects.equals(team_users, other.team_users) && Objects.equals(teamname, other.teamname);
 	}
+	
 
-	@Override
-	public String toString() {
-		return "Team [id=" + id + ", teamname=" + teamname + ", delete_date=" + delete_date + ", description="
-				+ description + ", active=" + active + ", users=" + users + "]";
-	}
+	
 
-	public void addUsers(User users) {
-		this.users.add(users);
-	}
+	
+
+	
+
+
 
 }
