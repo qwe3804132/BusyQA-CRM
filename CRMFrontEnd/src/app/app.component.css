@@ -1,3 +1,14 @@
 #navbarNav {
   font-family: Verdana !important;
 }
+
+.navbar img {
+  height: 80px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  border: none;
+}
+
+#title {
+  padding-left: 30px;
+}

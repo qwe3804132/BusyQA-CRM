@@ -1,0 +1,9 @@
+#button {
+  line-height: 150px;
+}
+
+.navbar-nav li a {
+  line-height: 150px;
+  height: 150px;
+  padding-top: 0;
+}
