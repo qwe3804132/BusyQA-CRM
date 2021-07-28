@@ -2,6 +2,8 @@ package com.crmbackend.user;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -10,8 +12,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
+import com.crmbackend.allService.teamService.repo.TeamRepository;
+import com.crmbackend.allService.teamService.repo.TeamUserRepository;
 import com.crmbackend.allService.userService.repo.UserRepository;
 import com.crmbackend.entity.Role;
+import com.crmbackend.entity.Team;
+import com.crmbackend.entity.TeamUsers;
 import com.crmbackend.entity.User;
 
 @DataJpaTest(showSql = true)
@@ -23,6 +29,10 @@ public class UserRepositoryTests {
 	private UserRepository repo;
 	@Autowired
 	private TestEntityManager entityManager;
+	@Autowired
+	private TeamRepository teamRepo;
+	@Autowired
+	private TeamUserRepository teamUserRepo;
 
 	@Test
 	public void testCreateNewUserWithSingleRole() {
@@ -79,6 +89,26 @@ public class UserRepositoryTests {
 		long count = repo.countById(id);
 		System.out.println(count);
 		assertThat(count).isGreaterThan(0);
+	}
+
+	@Test
+	public void testFetchTeams() {
+		List<Team> team = (List<Team>) teamRepo.findAll();
+		System.out.println(team.size());
+		System.out.println(team);
+
+		assertThat(team.size()).isGreaterThan(0);
+
+	}
+
+	@Test
+	public void addTeamMember() {
+		User addUser = repo.findById(20).get();
+		Team addTeam = teamRepo.findById(2).get();
+		TeamUsers teamusers = new TeamUsers(addTeam, addUser, 1);
+		TeamUsers a = teamUserRepo.save(teamusers);
+		assertThat(a).isNotNull();
+
 	}
 
 }

@@ -3,17 +3,15 @@ package com.crmbackend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crmbackend.allService.teamService.tService.TeamService;
 import com.crmbackend.allService.userService.repo.RoleRepository;
 import com.crmbackend.allService.userService.repo.UserRepository;
-import com.crmbackend.entity.Team;
+import com.crmbackend.entity.TeamUsers;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -28,20 +26,10 @@ public class TeamController {
 	TeamService teamService;
 
 	@GetMapping("/getAllTeams")
-	public List<Team> getAllTeams() {
+	public List<TeamUsers> getAllTeams() {
 
 		return teamService.listAll();
 
 	}
-
-	@PostMapping("/deleteUserFromTeam/{teamId}/{userId}")
-	public ResponseEntity<?> deleteUserFromTeam(){
-		return null;
-	}
-	
-	  
-	
-	
-	
 
 }
