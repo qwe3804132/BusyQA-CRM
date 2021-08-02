@@ -34,11 +34,11 @@
           </thead>
           <tbody>
             <tr *ngFor="let subItem of item.team_users">
-              <td *ngIf="subItem.active == 1">{{ subItem.user.id }}</td>
-              <td *ngIf="subItem.active == 1">
+              <td *ngIf="subItem.active == 'ACTIVE'">{{ subItem.user.id }}</td>
+              <td *ngIf="subItem.active == 'ACTIVE'">
                 {{ subItem.user.firstName }} {{ subItem.user.lastName }}
               </td>
-              <td *ngIf="subItem.active == 1">
+              <td *ngIf="subItem.active == 'ACTIVE'">
                 <button class="btn-sm btn-danger" type="button">remove</button>
               </td>
             </tr>

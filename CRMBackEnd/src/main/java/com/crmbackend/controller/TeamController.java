@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.crmbackend.allService.teamService.tService.TeamService;
 import com.crmbackend.allService.userService.repo.RoleRepository;
 import com.crmbackend.allService.userService.repo.UserRepository;
+import com.crmbackend.dtos.IavaliableUsers;
 import com.crmbackend.entity.Team;
-import com.crmbackend.entity.User;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -34,7 +34,7 @@ public class TeamController {
 	}
 
 	@GetMapping("/getAllUsers")
-	public List<User> getAllUsers() {
+	public List<IavaliableUsers> getAllUsers() {
 		return teamService.getAllUsers();
 
 	}
