@@ -16,7 +16,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Data;
+
 @Entity
+@Data
 @Table(name = "tblUsers")
 public class User {
 
@@ -39,17 +44,9 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
-
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	private Set<TeamUsers> team_users = new HashSet<TeamUsers>();
-
-	public Set<TeamUsers> getTeam_users() {
-		return team_users;
-	}
-
-	public void setTeam_users(Set<TeamUsers> team_users) {
-		this.team_users = team_users;
-	}
+	@JsonBackReference
+	@OneToMany(mappedBy = "user")
+	private Set<TeamUsers> team_users = new HashSet<>();
 
 	public User() {
 
@@ -138,11 +135,17 @@ public class User {
 		return firstName + " " + lastName;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", password=" + password + ", email=" + email + ", phoneNumber=" + phoneNumber + ", roles=" + roles
-				+ "]";
+	public User(Integer id, String username, String firstName, String lastName, String email, String phoneNumber,
+			Set<Role> roles, Set<TeamUsers> team_users) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.roles = roles;
+		this.team_users = team_users;
 	}
 
 }

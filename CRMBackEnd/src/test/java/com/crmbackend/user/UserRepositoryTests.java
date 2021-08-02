@@ -16,8 +16,6 @@ import com.crmbackend.allService.teamService.repo.TeamRepository;
 import com.crmbackend.allService.teamService.repo.TeamUserRepository;
 import com.crmbackend.allService.userService.repo.UserRepository;
 import com.crmbackend.entity.Role;
-import com.crmbackend.entity.Team;
-import com.crmbackend.entity.TeamUsers;
 import com.crmbackend.entity.User;
 
 @DataJpaTest(showSql = true)
@@ -93,21 +91,8 @@ public class UserRepositoryTests {
 
 	@Test
 	public void testFetchTeams() {
-		List<Team> team = (List<Team>) teamRepo.findAll();
-		System.out.println(team.size());
+		List<Object> team = teamRepo.getAllTeamAndDetails();
 		System.out.println(team);
-
-		assertThat(team.size()).isGreaterThan(0);
-
-	}
-
-	@Test
-	public void addTeamMember() {
-		User addUser = repo.findById(20).get();
-		Team addTeam = teamRepo.findById(2).get();
-		TeamUsers teamusers = new TeamUsers(addTeam, addUser, 1);
-		TeamUsers a = teamUserRepo.save(teamusers);
-		assertThat(a).isNotNull();
 
 	}
 

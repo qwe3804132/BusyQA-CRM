@@ -16,14 +16,14 @@ export class TeamService {
     return this.http.get(TEAM_API + 'getAllTeams', httpOptions);
   }
 
-  removeUserFromTeam(userId, teamId): Observable<any> {
-    return this.http.post(
-      TEAM_API + 'signup',
-      {
-        userId: userId,
-        teamId: teamId,
-      },
-      httpOptions
-    );
-  }
+  // removeUserFromTeam(userId, teamId): Observable<any> {
+  //   return this.http.post(
+  //     TEAM_API + 'signup',
+  //     {
+  //       userId: userId,
+  //       teamId: teamId,
+  //     },
+  //     httpOptions
+  //   );
+  // }
 }
