@@ -10,8 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,13 +35,15 @@ public class TeamUsers {
 	@ManyToOne
 	@MapsId("teamId")
 	@JoinColumn(name = "team_id")
-	@JsonBackReference
+	@JsonIgnoreProperties("team_users")
+
 	private Team team;
 
 	@ManyToOne
 	@MapsId("userId")
 	@JoinColumn(name = "user_id")
-	@JsonManagedReference
+	@JsonIgnoreProperties("team_users")
+
 	private User user;
 
 	@Column(name = "active")

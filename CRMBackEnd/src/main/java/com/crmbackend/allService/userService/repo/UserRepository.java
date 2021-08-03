@@ -25,7 +25,8 @@ public interface UserRepository extends PagingAndSortingRepository<User, Integer
 
 	Boolean existsByEmail(String email);
 
-	@Query(value = "select u.*,tu.*,count(CASE WHEN tu.active is not null THEN 1 END) as team_number from tbl_users u  left  join team_users tu on u.id = tu.user_id and tu.active = 'ACTIVE' GROUP by U.id ", nativeQuery = true)
+	@Query(value = "select u.*,tu.*,count(CASE WHEN tu.active is not null THEN 1 END) as team_number "
+			+ "from tbl_users u  left  join team_users tu on u.id = tu.user_id and tu.active = 'ACTIVE' GROUP by U.id ", nativeQuery = true)
 
 	public List<IavaliableUsers> getAllUsersAndTeamInfo();
 }

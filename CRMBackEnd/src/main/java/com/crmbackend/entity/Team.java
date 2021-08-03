@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
@@ -54,7 +54,7 @@ public class Team {
 	@Column(name = "active", length = 64, nullable = false)
 	private int active;
 
-	@JsonManagedReference
+	@JsonIgnoreProperties("team")
 	@OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<TeamUsers> team_users = new HashSet<>();
 

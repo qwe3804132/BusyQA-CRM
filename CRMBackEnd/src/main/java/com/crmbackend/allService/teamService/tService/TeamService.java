@@ -12,9 +12,9 @@ import com.crmbackend.allService.teamService.repo.TeamRepository;
 import com.crmbackend.allService.teamService.repo.TeamUserRepository;
 import com.crmbackend.allService.userService.repo.RoleRepository;
 import com.crmbackend.allService.userService.repo.UserRepository;
-import com.crmbackend.dtos.IavaliableUsers;
 import com.crmbackend.entity.Team;
 import com.crmbackend.entity.TeamUsers;
+import com.crmbackend.entity.User;
 
 @Service
 @Transactional
@@ -45,8 +45,13 @@ public class TeamService {
 
 	}
 
-	public List<IavaliableUsers> getAllUsers() {
-		List<IavaliableUsers> allUser = userRepo.getAllUsersAndTeamInfo();
-		return allUser;
+	public List<User> getAllUsers() {
+		List<User> allUser = (List<User>) userRepo.findAll();
+
+		List<User> finalResult = allUser.stream().map(t -> new User(t.getId(), t.getUsername(), t.getFirstName(),
+				t.getLastName(), t.getEmail(), t.getPhoneNumber(), t.getRoles(), t.getTeam_users().stream()
+						.filter(u -> u.getActive().equals(TeamUsers.Status.ACTIVE)).collect(Collectors.toSet())))
+				.collect(Collectors.toList());
+		return finalResult;
 	}
 }
